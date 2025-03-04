@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Roger AI SDR",
+  "description": "description in manifest.json",
+  "background": {
+    "service_worker": "src/pages/background/index.js"
+  },
+  "action": {
+    "default_popup": "src/pages/popup/index.html",
+    "default_icon": {
+      "32": "icon-32.png"
+    }
+  },
+  "icons": {
+    "128": "icon-128.png"
+  },
+  "permissions": ["cookies", "storage", "activeTab"],
+  "host_permissions": ["https://www.linkedin.com/*", "http://localhost:3000/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["src/pages/content/index.tsx"],
+      "css": ["contentStyle.css"]
+    }
+  ],
+  "devtools_page": "src/pages/devtools/index.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["contentStyle.css", "icon-128.png", "icon-32.png"],
+      "matches": []
+    }
+  ]
+}
